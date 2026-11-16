@@ -1,77 +1,1165 @@
 <!DOCTYPE html>
-
+<html lang="ro">
 <head>
-    <title>Utu e un baiat foarte destept</title>
-    <style>
-        body {
-            background-color: #ADD8E6;
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            flex-direction: column;
-        }
-        
-        h1 {
-            margin-bottom: 20px;
-            text-align: center;
-            color: red; 
-        }
-        
-        .button-link {
-            padding: 15px 30px;
-            font-size: 18px;
-            background-color: #008CBA; 
-            color: white;
-            border: none;
-            border-radius: 30px;
-            text-decoration: none;
-            display: inline-block;
-            cursor: pointer;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); 
-            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
-        }
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DICE Coffee &amp; More</title>
+<meta name="description" content="Cafea de specialitate, deserturi făcute în casă și peste 100 de jocuri de societate, în centrul Piatrei Neamț.">
+<meta name="theme-color" content="#1E1510">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&amp;family=Unbounded:wght@500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+:root{
+  /* Layout: o coloană pe telefon; de la 1040px text în stânga și obiectul secțiunii (zaruri, tavă, raft, card) în dreapta.
+     Benzile închise (espresso) și deschise (porțelan) alternează ca fețele zarului; lumina caldă a spotului din cafenea e singurul accent strălucitor. */
+  --espresso:#1E1510;
+  --porcelain:#F2F1EC;
+  --ink:#17110D;
+  --ivy:#2F6B4F;
+  --lamp:#F0B062;
+  --smoke:#6E655F;
+  --font-display:"Unbounded","Arial Black",system-ui,sans-serif;
+  --font-body:"Figtree","Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+  --step--1:.875rem;
+  --step-0:1.0625rem;
+  --step-1:clamp(1.12rem,1.04rem + .4vw,1.32rem);
+  --step-2:clamp(1.3rem,1.12rem + .9vw,1.8rem);
+  --step-3:clamp(1.65rem,1.2rem + 2.2vw,2.85rem);
+  --step-4:clamp(2rem,1.15rem + 4.2vw,4.3rem);
+  --gutter:clamp(1rem,.6rem + 2vw,2.5rem);
+  --maxw:1200px;
+  --label-w:6.6rem;
+  color-scheme:light;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;background:var(--espresso)}
+html.lock{overflow:hidden}
+body{margin:0;background:var(--porcelain);color:var(--ink);font-family:var(--font-body);font-size:var(--step-0);line-height:1.55}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opacity:.07;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .8 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+main{overflow-x:clip}
+img{max-width:100%;display:block}
+h1,h2,h3{font-family:var(--font-display);font-weight:700;line-height:1.08;margin:0;text-wrap:balance;letter-spacing:-.01em}
+p{margin:0}
+a{color:inherit}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--ivy);outline-offset:3px;border-radius:8px}
+.dark :focus-visible,.green :focus-visible,.nav :focus-visible,.sheet :focus-visible{outline-color:var(--lamp)}
+.wrap{width:min(100% - 2*var(--gutter),var(--maxw));margin-inline:auto}
+section{scroll-margin-top:88px}
+.band{padding-block:clamp(4rem,3rem + 5vw,7.5rem)}
+.dark{background:var(--espresso);color:var(--porcelain);color-scheme:dark}
+.green{background:var(--ivy);color:var(--porcelain);color-scheme:dark}
+.muted{color:var(--smoke)}
+.dark .muted,.green .muted{color:color-mix(in srgb,var(--porcelain) 72%,transparent)}
+.small{font-size:var(--step--1)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
-        .button-link:hover {
-            background-color: #005f7a; 
-            transform: translateY(-5px); 
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); 
-        }
-        
-        .gallery {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 20px;
-        }
-        
-        .gallery img {
-            width: 200px;
-            height: 200px; 
-            margin: 10px;
-            border-radius: 10px;
-        }
+/* ---------- butoane ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;min-height:48px;padding:.75rem 1.35rem;border-radius:999px;font-weight:700;text-decoration:none;border:2px solid transparent;cursor:pointer;transition:transform .2s,background-color .25s,color .25s,border-color .25s;-webkit-tap-highlight-color:transparent}
+.btn:active{transform:scale(.97)}
+.btn-lamp{background:var(--lamp);color:var(--ink)}
+.btn-lamp:hover{background:color-mix(in srgb,var(--lamp) 80%,var(--porcelain))}
+.btn-ghost{border-color:color-mix(in srgb,var(--porcelain) 40%,transparent);color:var(--porcelain);background:transparent}
+.btn-ghost:hover{background:var(--porcelain);color:var(--ink);border-color:var(--porcelain)}
+.btn-ink{background:var(--ink);color:var(--porcelain)}
+.btn-ink:hover{background:var(--ivy)}
+.btn-line{border-color:var(--ink);color:var(--ink);background:transparent}
+.btn-line:hover{background:var(--ink);color:var(--porcelain)}
+.btn-line-light{border-color:color-mix(in srgb,var(--porcelain) 45%,transparent);color:var(--porcelain);background:transparent}
+.btn-line-light:hover{background:var(--porcelain);color:var(--ink)}
+.actions{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.6rem}
 
-        .center-content {
-            text-align: center;
-        }
-    </style>
+/* ---------- navigație ---------- */
+.nav{position:fixed;z-index:50;top:10px;left:50%;transform:translateX(-50%);width:min(calc(100% - 20px),calc(var(--maxw) + 24px));display:flex;align-items:center;gap:.75rem;padding:.4rem .4rem .4rem 1rem;border-radius:999px;background:color-mix(in srgb,var(--espresso) 70%,transparent);-webkit-backdrop-filter:blur(14px) saturate(140%);backdrop-filter:blur(14px) saturate(140%);border:1px solid color-mix(in srgb,var(--porcelain) 12%,transparent);color:var(--porcelain);transition:background-color .3s}
+.nav.scrolled{background:color-mix(in srgb,var(--espresso) 92%,transparent)}
+.brand{display:flex;align-items:center;gap:.55rem;text-decoration:none;font-family:var(--font-display);font-weight:800;letter-spacing:.08em;font-size:1rem}
+.brand img{height:30px;width:auto}
+.nav nav{display:none;gap:.15rem;margin-left:auto}
+.nav nav a{text-decoration:none;font-weight:600;padding:.5rem .9rem;border-radius:999px;transition:background-color .2s}
+.nav nav a:hover,.nav nav a.active{background:color-mix(in srgb,var(--porcelain) 13%,transparent)}
+.nav-cta{margin-left:auto;min-height:42px;padding:.5rem 1.1rem}
+.burger{flex:none;width:44px;height:44px;border-radius:50%;border:1px solid color-mix(in srgb,var(--porcelain) 22%,transparent);background:transparent;display:grid;place-items:center;cursor:pointer;color:var(--porcelain)}
+.burger svg{width:20px;height:20px}
+@media (min-width:860px){.nav nav{display:flex}.nav-cta{margin-left:0}.burger{display:none}}
+
+.sheet{position:fixed;inset:0;z-index:60;background:var(--espresso);color:var(--porcelain);display:flex;flex-direction:column;justify-content:center;gap:.3rem;padding:6rem var(--gutter) 3rem}
+.sheet[hidden]{display:none}
+.sheet a{font-family:var(--font-display);font-weight:700;font-size:clamp(2rem,9vw,3.2rem);text-decoration:none;line-height:1.3;width:fit-content;animation:sheetIn .5s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i,0) * 60ms)}
+.sheet a:hover{color:var(--lamp)}
+.sheet-close{position:absolute;top:16px;right:16px;width:48px;height:48px;border-radius:50%;border:1px solid color-mix(in srgb,var(--porcelain) 25%,transparent);background:transparent;cursor:pointer;display:grid;place-items:center;color:var(--porcelain)}
+.sheet-foot{margin-top:2.2rem;color:color-mix(in srgb,var(--porcelain) 70%,transparent)}
+@keyframes sheetIn{from{transform:translateY(26px);opacity:0}}
+
+/* ---------- zaruri 3D ---------- */
+.die-slot{position:absolute;display:block}
+.hopper,.floater{display:block}
+.die{--s:120px;position:relative;display:block;width:var(--s);height:var(--s);transform-style:preserve-3d;transform:rotateX(-24deg) rotateY(32deg);transition:transform 1.25s cubic-bezier(.16,.9,.27,1.04)}
+.die .face,.die .core{position:absolute;inset:0;display:block}
+.die .face{background:var(--porcelain);border:calc(var(--s) * .065) solid var(--ink);border-radius:22%;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,1fr);padding:12%;backface-visibility:hidden;-webkit-backface-visibility:hidden;box-shadow:inset 0 0 calc(var(--s) * .14) color-mix(in srgb,var(--ink) 14%,transparent)}
+.die .face i,.pf i{display:block;width:66%;aspect-ratio:1;border-radius:50%;background:var(--ink);place-self:center}
+.p1{grid-area:1/1}.p3{grid-area:1/3}.p4{grid-area:2/1}.p5{grid-area:2/2}.p6{grid-area:2/3}.p7{grid-area:3/1}.p9{grid-area:3/3}
+.die .f1{transform:translateZ(calc(var(--s) / 2))}
+.die .f6{transform:rotateY(180deg) translateZ(calc(var(--s) / 2))}
+.die .f2{transform:rotateY(90deg) translateZ(calc(var(--s) / 2))}
+.die .f5{transform:rotateY(-90deg) translateZ(calc(var(--s) / 2))}
+.die .f3{transform:rotateX(90deg) translateZ(calc(var(--s) / 2))}
+.die .f4{transform:rotateX(-90deg) translateZ(calc(var(--s) / 2))}
+.die .core{inset:5%;background:var(--ink);border-radius:16%}
+.die .c1{transform:rotateY(90deg)}
+.die .c2{transform:rotateX(90deg)}
+.pf{display:inline-grid;flex:none;width:1.45em;height:1.45em;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,1fr);padding:.16em;border:2px solid currentColor;border-radius:.34em;vertical-align:-.3em}
+.pf i{background:currentColor;width:72%}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;padding:6.4rem 0 3.6rem;isolation:isolate}
+.hero-grid{display:grid;gap:1.2rem;grid-template-areas:"pill" "stage" "copy";position:relative;z-index:1}
+.hero .status{grid-area:pill;justify-self:start;position:relative;z-index:3;background:var(--espresso)}
+.hero-copy{grid-area:copy}
+.stage{grid-area:stage;position:relative;height:clamp(260px,70vw,350px);perspective:1000px}
+@media (min-width:1040px){
+  .hero{padding:8.5rem 0 5.5rem}
+  .hero-grid{grid-template-columns:1.08fr .92fr;grid-template-areas:"pill stage" "copy stage";column-gap:3rem;row-gap:1.2rem;align-items:start}
+  .hero .status{align-self:end}
+  .stage{height:540px;align-self:center}
+}
+.status{display:inline-flex;align-items:center;gap:.6rem;padding:.42rem .95rem .42rem .75rem;border-radius:999px;border:1px solid color-mix(in srgb,currentColor 24%,transparent);font-weight:600;font-size:var(--step--1);line-height:1.3}
+.status-dot{flex:none;width:.6rem;height:.6rem;border-radius:50%;background:var(--lamp);animation:ping 2.2s infinite}
+.status[data-state="open"] .status-dot{background:#58C27D;animation-name:pingGreen}
+.status[data-state="closed"] .status-dot{background:#9A918B;animation:none}
+@keyframes ping{0%{box-shadow:0 0 0 0 rgba(240,176,98,.65)}70%,100%{box-shadow:0 0 0 11px rgba(240,176,98,0)}}
+@keyframes pingGreen{0%{box-shadow:0 0 0 0 rgba(88,194,125,.6)}70%,100%{box-shadow:0 0 0 11px rgba(88,194,125,0)}}
+.hero h1{font-size:var(--step-4);font-weight:800;letter-spacing:-.025em;line-height:1.02}
+.hero .line{display:block;overflow:hidden;padding-bottom:.06em}
+.hero .line>span{display:inline-block;animation:rise .95s cubic-bezier(.2,.8,.2,1) both}
+.hero .line+.line>span{animation-delay:.1s}
+@keyframes rise{from{transform:translateY(112%)}}
+.hero .lead{margin-top:1.1rem;max-width:36ch;font-size:var(--step-1);color:color-mix(in srgb,var(--porcelain) 82%,transparent)}
+.hero .status,.hero .lead,.cd-title,.countdown,.cd-caption,.hero .actions{animation:fadeUp .8s cubic-bezier(.2,.8,.2,1) both}
+.hero .lead{animation-delay:.25s}.cd-title{animation-delay:.3s}.countdown{animation-delay:.35s}.cd-caption{animation-delay:.4s}.hero .actions{animation-delay:.5s}
+@keyframes fadeUp{from{transform:translateY(16px);opacity:0}}
+.cd-title{margin-top:1.7rem;font-weight:700;font-size:var(--step--1);color:color-mix(in srgb,var(--porcelain) 88%,transparent)}
+.countdown{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.5rem;max-width:31rem;margin-top:.6rem}
+.cd-unit{display:flex;flex-direction:column;padding:.75rem .75rem .6rem;border-radius:14px;background:color-mix(in srgb,var(--porcelain) 6%,transparent);border:1px solid color-mix(in srgb,var(--porcelain) 14%,transparent);overflow:hidden}
+.cd-num{display:block;font-family:var(--font-display);font-weight:700;font-size:clamp(1.15rem,.75rem + 2vw,2.35rem);line-height:1.05;color:var(--lamp);font-variant-numeric:tabular-nums}
+.cd-num.tick{animation:tick .45s cubic-bezier(.2,.8,.2,1)}
+@keyframes tick{from{transform:translateY(-45%);opacity:.2}}
+.cd-label{margin-top:.35rem;font-size:var(--step--1);color:color-mix(in srgb,var(--porcelain) 70%,transparent)}
+.cd-caption{margin-top:.7rem;font-size:var(--step--1)}
+.countdown[hidden],.cd-caption[hidden]{display:none}
+
+.lamp{position:absolute;left:50%;top:-14px;width:30px;height:46px;transform:translateX(-50%);border-radius:5px 5px 7px 7px;background:linear-gradient(90deg,#050403,color-mix(in srgb,var(--ink) 70%,var(--porcelain)) 45%,#050403);z-index:2}
+.lamp::before{content:"";position:absolute;bottom:100%;left:50%;width:2px;height:420px;background:#050403;transform:translateX(-50%)}
+.lamp::after{content:"";position:absolute;left:50%;bottom:-3px;width:18px;height:6px;border-radius:50%;background:#FFE3B5;transform:translateX(-50%);box-shadow:0 0 18px 6px rgba(240,176,98,.55)}
+.cone{position:absolute;left:50%;top:26px;width:min(150%,700px);height:calc(100% + 40px);transform:translateX(-50%);background:conic-gradient(from 158deg at 50% 0%,transparent 0deg,rgba(240,176,98,.26) 22deg,transparent 44deg);-webkit-mask-image:linear-gradient(#000 35%,transparent 92%);mask-image:linear-gradient(#000 35%,transparent 92%);pointer-events:none;animation:breathe 7s ease-in-out infinite}
+.pool{position:absolute;left:50%;top:58%;width:min(115%,560px);aspect-ratio:1.6;transform:translate(-50%,-50%);background:radial-gradient(closest-side,rgba(240,176,98,.2),rgba(240,176,98,.06) 55%,transparent);pointer-events:none}
+@keyframes breathe{50%{opacity:.78}}
+.dice-throw{position:absolute;inset:0;z-index:1;background:none;border:0;padding:0;cursor:pointer;-webkit-tap-highlight-color:transparent;transform:translateY(calc(var(--sp,0) * 40px)) rotateX(calc(var(--py,0) * -14deg)) rotateY(calc(var(--px,0) * 18deg)) rotate(calc(var(--sp,0) * -9deg));transition:transform .35s ease-out}
+.dice-throw:focus-visible{outline-offset:-6px;border-radius:24px}
+.stage .die-slot.big{left:16%;top:22%}
+.stage .die-slot.small{left:55%;top:47%}
+.stage .big .die{--s:clamp(104px,29vw,186px)}
+.stage .small .die{--s:clamp(68px,18.5vw,118px)}
+.stage .die-slot{animation:dropIn 1.05s cubic-bezier(.3,1.3,.5,1) both}
+.stage .small{animation-delay:.12s}
+@keyframes dropIn{from{transform:translateY(-130%);opacity:0}}
+.floater{animation:float 6s ease-in-out infinite}
+.small .floater{animation-duration:5s;animation-delay:-2.2s}
+@keyframes float{50%{transform:translateY(-12px) rotate(-2deg)}}
+.hop .hopper{animation:hop 1.25s cubic-bezier(.3,.7,.4,1)}
+.hop .small .hopper{animation-delay:.05s}
+@keyframes hop{0%{transform:none}24%{transform:translateY(-78px) rotate(8deg)}52%{transform:none}66%{transform:translateY(-18px)}80%,100%{transform:none}}
+.floor{position:absolute;left:50%;bottom:9%;width:62%;height:30px;transform:translateX(-50%);border-radius:50%;background:radial-gradient(closest-side,rgba(0,0,0,.6),transparent);pointer-events:none}
+.hop .floor{animation:shadow 1.25s cubic-bezier(.3,.7,.4,1)}
+@keyframes shadow{24%{transform:translateX(-50%) scale(.55);opacity:.45}52%{transform:translateX(-50%)}66%{transform:translateX(-50%) scale(.85)}}
+.stage-hint{position:absolute;left:50%;bottom:0;transform:translateX(-50%);display:flex;align-items:center;gap:.5rem;white-space:nowrap;font-size:var(--step--1);font-weight:600;color:color-mix(in srgb,var(--porcelain) 72%,transparent);pointer-events:none;z-index:2}
+.stage-hint::before{content:"";width:.5rem;height:.5rem;border-radius:50%;background:var(--lamp);animation:ping 2.2s infinite}
+
+/* ---------- bandă rulantă ---------- */
+.marquee{position:relative;z-index:2;padding:1.5rem 0 1.9rem;background:linear-gradient(var(--espresso) 50%,var(--porcelain) 50%);overflow:hidden}
+.mq{width:112%;margin-left:-6%;overflow:hidden}
+.mq-a{background:var(--ivy);color:var(--porcelain);transform:rotate(-2.2deg)}
+.mq-b{background:var(--porcelain);color:var(--ink);border-block:2px solid var(--ink);transform:rotate(1.5deg);margin-top:-.35rem}
+.mq-track{display:flex;width:max-content;align-items:center;padding:.85rem 0;white-space:nowrap;font-family:var(--font-display);font-weight:600;font-size:var(--step-1);will-change:transform}
+.mq-track>*{margin-right:1.35rem;flex:none}
+.mq-track .pip{display:block;width:.5em;height:.5em;border-radius:50%;background:currentColor}
+.mq-track .ol{color:transparent;-webkit-text-stroke:1.4px var(--ink)}
+
+/* ---------- zarul care alege ---------- */
+.roll{display:grid;gap:1.5rem;align-items:center}
+@media (min-width:900px){.roll{grid-template-columns:1.05fr .95fr;gap:3.5rem}}
+.roll h2{font-size:var(--step-3)}
+.roll-copy>p{margin-top:1rem;max-width:44ch}
+.faces-legend{list-style:none;padding:0;margin:1.5rem 0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.35rem .8rem}
+@media (min-width:560px){.faces-legend{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.faces-legend li{display:flex;align-items:center;gap:.6rem;font-weight:600;padding:.4rem .55rem;border-radius:12px;transition:background-color .35s,color .35s}
+.faces-legend li.on{background:var(--ink);color:var(--porcelain)}
+.roll-result{margin-top:1.1rem;min-height:3.3em;font-size:var(--step-1);max-width:46ch}
+.roll-result b{font-weight:800}
+.roll-result .see{font-weight:700;color:var(--ivy);text-underline-offset:3px;white-space:nowrap}
+.roll-stage{position:relative;height:clamp(260px,72vw,380px);display:grid;place-items:center;order:-1}
+@media (min-width:900px){.roll-stage{order:0}}
+.tray{position:absolute;width:min(80vw,330px);aspect-ratio:1;border-radius:50%;border:3px solid var(--ink);background:radial-gradient(circle at 50% 38%,#fff,color-mix(in srgb,var(--porcelain) 82%,var(--ink)));box-shadow:inset 0 14px 34px color-mix(in srgb,var(--ink) 22%,transparent),0 30px 50px -30px color-mix(in srgb,var(--ink) 55%,transparent)}
+.tray::after{content:"";position:absolute;inset:16px;border-radius:50%;border:2px dashed color-mix(in srgb,var(--ink) 22%,transparent)}
+.big-die{position:relative;z-index:1;width:100%;height:100%;display:grid;place-items:center;background:none;border:0;padding:0;cursor:pointer;-webkit-tap-highlight-color:transparent;perspective:900px}
+.big-die .die-slot{position:relative}
+.big-die .die{--s:clamp(118px,30vw,160px)}
+.roll-stage .floor{bottom:22%;width:38%;background:radial-gradient(closest-side,color-mix(in srgb,var(--ink) 45%,transparent),transparent)}
+
+/* ---------- meniu ---------- */
+.menu-head{display:flex;align-items:flex-end;justify-content:space-between;gap:1rem;margin:clamp(4rem,3rem + 4vw,6.5rem) 0 1.5rem}
+.menu-head h2{font-size:var(--step-3)}
+.menu-head p{margin-top:.5rem}
+.cup{flex:none;width:clamp(74px,14vw,112px);height:auto;color:var(--ink)}
+.cup .steam{fill:none;stroke:currentColor;stroke-width:3.2;stroke-linecap:round;animation:steam 3.4s ease-in-out infinite;opacity:0}
+.cup .steam.s2{animation-delay:-1.15s}.cup .steam.s3{animation-delay:-2.3s}
+@keyframes steam{0%{transform:translateY(10px);opacity:0}35%{opacity:.9}100%{transform:translateY(-14px);opacity:0}}
+.board{display:grid;gap:2px;background:color-mix(in srgb,var(--ink) 16%,var(--porcelain));border:3px solid var(--ink);border-radius:28px;overflow:hidden}
+@media (min-width:720px){.board{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:1040px){.board{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.cat{background:color-mix(in srgb,var(--porcelain) 55%,#fff);padding:clamp(1.25rem,1rem + 1vw,2rem);transition:background-color .5s}
+.cat h3{display:flex;align-items:center;gap:.65rem;font-size:var(--step-1);margin-bottom:1.1rem}
+.cat.picked{background:color-mix(in srgb,var(--lamp) 26%,var(--porcelain))}
+.cat ul{list-style:none;margin:0;padding:0;display:grid;gap:.8rem}
+.item{display:grid;grid-template-columns:auto 1fr auto;align-items:baseline;column-gap:.5rem;scroll-margin-top:140px}
+.item .nm{font-weight:700}
+.item .dots{border-bottom:2px dotted color-mix(in srgb,var(--ink) 32%,transparent);transform:translateY(-.28em);min-width:1rem}
+.item .pr{font-weight:800;font-variant-numeric:tabular-nums;white-space:nowrap}
+.item .dt{grid-column:1/-1;font-size:var(--step--1);color:var(--smoke)}
+.item.picked .nm{box-shadow:inset 0 -.42em 0 color-mix(in srgb,var(--lamp) 85%,transparent)}
+.item.picked{animation:nudge .7s cubic-bezier(.2,1.5,.4,1)}
+@keyframes nudge{30%{transform:translateX(8px)}}
+.menu-note{margin-top:1rem}
+
+/* ---------- jocuri ---------- */
+.games{display:grid;gap:2.6rem;grid-template-columns:minmax(0,1fr)}
+@media (min-width:1040px){.games{grid-template-columns:repeat(2,minmax(0,1fr));gap:3rem 4.5rem;align-items:start}}
+.games h2{font-size:var(--step-3)}
+.games-copy>p{margin-top:1rem;max-width:42ch;font-size:var(--step-1)}
+.rules{list-style:none;padding:0;margin:1.6rem 0 0;display:grid;gap:.85rem;max-width:44ch}
+.rules li{display:grid;grid-template-columns:auto 1fr;gap:.8rem;align-items:baseline}
+.rules li::before{content:"";width:.55rem;height:.55rem;border-radius:50%;background:var(--lamp);transform:translateY(-.1em)}
+.shelf-wrap{position:relative;overflow:hidden;padding:2rem 1rem 1.6rem;border-radius:26px;background:radial-gradient(120% 90% at 50% 0%,color-mix(in srgb,var(--lamp) 16%,transparent),transparent 70%)}
+.shelf{display:flex;align-items:flex-end;justify-content:center;gap:4px;min-height:180px;padding-inline:4px}
+.box{--h:120px;--w:40px;--c:var(--lamp);--t:var(--ink);flex:none;width:var(--w);height:var(--h);background:var(--c);color:var(--t);border:0;padding:.5rem 0;border-radius:5px 5px 2px 2px;display:flex;align-items:center;justify-content:center;writing-mode:vertical-rl;font-family:var(--font-display);font-weight:700;font-size:.7rem;letter-spacing:.02em;cursor:pointer;transition:translate .35s cubic-bezier(.2,1.4,.4,1),box-shadow .3s;box-shadow:inset -4px 0 0 color-mix(in srgb,#000 14%,transparent),inset 0 6px 0 color-mix(in srgb,#fff 18%,transparent);-webkit-tap-highlight-color:transparent}
+.box span{transform:rotate(180deg)}
+button.box:hover,.box.on{translate:0 -16px}
+.box.on{box-shadow:inset -4px 0 0 color-mix(in srgb,#000 14%,transparent),0 0 0 3px var(--porcelain)}
+.box.deco{cursor:default}
+.box.lean{rotate:-8deg;transform-origin:100% 100%;margin-left:10px}
+.plank{height:14px;border-radius:4px;background:color-mix(in srgb,var(--lamp) 42%,var(--espresso));box-shadow:0 14px 26px rgba(0,0,0,.4)}
+@media (max-width:480px){.box.deco{display:none}.box{width:calc(var(--w) * .82)}}
+.shelf-hint{margin-top:1rem;text-align:center}
+.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.2rem 1rem;margin:0}
+@media (min-width:720px){.stats{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.stats div{display:flex;flex-direction:column-reverse;gap:.2rem;border-top:1px solid color-mix(in srgb,var(--porcelain) 18%,transparent);padding-top:.8rem}
+.stats dd{margin:0;font-family:var(--font-display);font-weight:700;font-size:var(--step-3);color:var(--lamp);font-variant-numeric:tabular-nums;line-height:1}
+.stats dt{color:color-mix(in srgb,var(--porcelain) 72%,transparent);font-size:var(--step--1)}
+.cats{list-style:none;margin:0;padding:0;display:grid;gap:0}
+@media (min-width:720px){.cats{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:2rem}}
+.cats li{padding:1rem .2rem 1rem;border-top:1px solid color-mix(in srgb,var(--porcelain) 14%,transparent);transition:background-color .35s,padding .35s;border-radius:4px}
+.cats li.on{background:color-mix(in srgb,var(--lamp) 14%,transparent);padding-inline:.9rem}
+.cats h3{font-size:var(--step-1);display:flex;flex-wrap:wrap;align-items:center;gap:.35rem .7rem}
+.cats p{margin-top:.35rem;color:color-mix(in srgb,var(--porcelain) 78%,transparent)}
+.chip{display:inline-block;font-family:var(--font-body);font-size:.78rem;font-weight:600;letter-spacing:0;padding:.12rem .55rem;border-radius:999px;border:1px solid color-mix(in srgb,var(--porcelain) 30%,transparent)}
+.games-wide{grid-column:1/-1}
+
+/* ---------- program ---------- */
+.program-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:1rem 2rem;margin-bottom:1.8rem}
+.program-head h2{font-size:var(--step-3);max-width:16ch}
+.week{border:3px solid var(--ink);border-radius:26px;padding:1rem clamp(.7rem,.4rem + 1.2vw,1.6rem) 1.1rem;background:color-mix(in srgb,var(--porcelain) 55%,#fff)}
+@media (min-width:720px){:root{--label-w:8.2rem}}
+.week-axis{position:relative;height:1.3rem;margin-left:calc(var(--label-w) + .6rem);font-size:.72rem;font-weight:600;color:var(--smoke);font-variant-numeric:tabular-nums}
+.week-axis span{position:absolute;left:calc(var(--s) * 1%);transform:translateX(-50%)}
+.week-axis span:first-child{transform:none}
+.week-axis span:last-child{transform:translateX(-100%)}
+.day{display:grid;grid-template-columns:var(--label-w) minmax(0,1fr);align-items:center;gap:.6rem;padding:.45rem 0;border-top:1px solid color-mix(in srgb,var(--ink) 10%,transparent)}
+.day-name b{display:flex;align-items:center;gap:.35rem;font-weight:700;line-height:1.2}
+.day-name span{display:block;font-size:.76rem;color:var(--smoke);font-variant-numeric:tabular-nums}
+.day.today .day-name b::after{content:"azi";font-size:.62rem;font-weight:700;background:var(--ivy);color:var(--porcelain);padding:.12rem .42rem;border-radius:999px}
+.track{position:relative;height:30px;border-radius:8px;background:repeating-linear-gradient(90deg,transparent 0 calc(100% / 17 - 1px),color-mix(in srgb,var(--ink) 9%,transparent) calc(100% / 17 - 1px) calc(100% / 17))}
+.open,.ev{position:absolute;left:calc(var(--s) * 1%);width:calc(var(--w) * 1%)}
+.open{top:0;bottom:0;background:color-mix(in srgb,var(--ink) 13%,transparent);border-radius:8px;transform-origin:0 50%}
+.ev{top:5px;bottom:5px;border-radius:6px}
+.day.today .open{background:color-mix(in srgb,var(--ivy) 26%,transparent)}
+.ev-morning,.sw-morning{background:var(--lamp)}
+.ev-student,.sw-student{background:repeating-linear-gradient(135deg,var(--lamp) 0 5px,color-mix(in srgb,var(--lamp) 30%,transparent) 5px 10px)}
+.ev-night,.sw-night{background:var(--espresso)}
+.ev-tour,.sw-tour{background:repeating-linear-gradient(135deg,var(--espresso) 0 5px,color-mix(in srgb,var(--espresso) 30%,transparent) 5px 10px)}
+.ev-family,.sw-family{background:var(--ivy)}
+.now-mark{position:absolute;top:-7px;bottom:-7px;width:3px;margin-left:-1.5px;border-radius:3px;background:var(--ink);z-index:2}
+.now-mark b{position:absolute;bottom:100%;left:50%;transform:translateX(-50%);font-size:.6rem;font-weight:800;background:var(--ink);color:var(--porcelain);padding:.05rem .35rem;border-radius:4px;margin-bottom:2px}
+.week-note{margin-top:1rem}
+.events{list-style:none;padding:0;margin:2.2rem 0 0;display:grid;gap:0}
+@media (min-width:720px){.events{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:2.5rem}}
+@media (min-width:1040px){.events{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.events li{display:grid;grid-template-columns:auto 1fr;gap:.2rem .9rem;padding:1rem 0;border-top:1px solid color-mix(in srgb,var(--ink) 14%,transparent)}
+.events .sw{grid-row:span 3;width:16px;height:44px;border-radius:5px;margin-top:.2rem}
+.events h3{font-size:var(--step-1)}
+.events .when{font-weight:700;font-size:var(--step--1)}
+.events .what{color:var(--smoke)}
+
+/* ---------- club ---------- */
+.club{display:grid;gap:3rem;align-items:center}
+@media (min-width:900px){.club{grid-template-columns:1.1fr .9fr;gap:4rem}}
+.club h2{font-size:var(--step-3)}
+.club-copy>p{margin-top:1rem;font-size:var(--step-1);max-width:40ch}
+.perks{list-style:none;padding:0;margin:1.6rem 0 0;display:grid;gap:1rem;max-width:46ch}
+.perks li{display:grid;grid-template-columns:auto 1fr;gap:.85rem;align-items:start}
+.perks .pf{color:var(--lamp);margin-top:.05em}
+.card{position:relative;justify-self:center;width:min(100%,390px);appearance:none;border:0;cursor:pointer;text-align:left;background:var(--porcelain);color:var(--ink);border-radius:24px;padding:1.4rem 1.4rem 1.2rem;box-shadow:0 34px 60px -24px rgba(0,0,0,.55);rotate:-3deg;transition:rotate .45s cubic-bezier(.2,.8,.2,1),translate .45s cubic-bezier(.2,.8,.2,1);-webkit-tap-highlight-color:transparent}
+.card:hover{rotate:0deg;translate:0 -4px}
+.card:active{translate:0 2px}
+.card-top{display:flex;align-items:center;justify-content:space-between;gap:1rem;font-family:var(--font-display);font-weight:700}
+.card-top img{height:36px;width:auto}
+.stamps{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:.6rem;margin:1.4rem 0 1.1rem}
+.stamp{aspect-ratio:1;border-radius:50%;border:2px dashed color-mix(in srgb,var(--ink) 32%,transparent);display:grid;place-items:center;color:var(--ivy)}
+.stamp.on{border:2px solid var(--ink);background:var(--ink)}
+.stamp.on::after{content:"";width:30%;height:30%;border-radius:50%;background:var(--porcelain)}
+.stamp.gift{border-color:var(--ivy);border-style:solid}
+.stamp.gift svg{width:58%;height:auto}
+.stamp.gift.on svg{display:none}
+.stamp.pop{animation:stampIn .5s cubic-bezier(.2,1.6,.4,1)}
+@keyframes stampIn{from{transform:scale(1.9) rotate(-25deg);opacity:0}}
+.card-foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.3rem 1rem;font-size:var(--step--1);font-weight:700}
+.card-foot span+span{font-weight:500;color:var(--smoke)}
+.spark{position:absolute;width:10px;height:10px;border-radius:50%;pointer-events:none;z-index:5}
+
+/* ---------- locul ---------- */
+.place{display:grid;align-items:center}
+@media (min-width:900px){.place{grid-template-columns:1fr 1fr}}
+.place-media{position:relative;overflow:hidden;aspect-ratio:4/5;max-height:86vh}
+@media (min-width:900px){.place-media{aspect-ratio:auto;height:min(820px,100vh);max-height:none}}
+.place-media img{width:100%;height:100%;object-fit:cover;object-position:50% 40%;transform:scale(1.14);will-change:transform}
+.place-copy{padding:clamp(2.6rem,2rem + 3vw,5rem) var(--gutter)}
+.place-copy h2{font-size:var(--step-3);max-width:15ch}
+.place-copy p{margin-top:1.1rem;max-width:40ch;font-size:var(--step-1);color:color-mix(in srgb,var(--porcelain) 82%,transparent)}
+.place-copy .actions{margin-top:1.8rem}
+
+/* ---------- rezervări ---------- */
+.res{display:grid;gap:3rem}
+@media (min-width:1000px){.res{grid-template-columns:1.2fr .8fr;gap:4rem;align-items:start}}
+.res h2{font-size:var(--step-3)}
+.res-intro{margin-top:.8rem;max-width:48ch}
+form{display:grid;gap:1.1rem;margin-top:1.6rem}
+form[hidden],.res-out[hidden]{display:none}
+.field{display:grid;gap:.4rem;border:0;padding:0;margin:0;min-width:0}
+.field>label,.field legend{font-weight:700;font-size:var(--step--1);padding:0}
+input,select,textarea{font:inherit;color:var(--ink);background:color-mix(in srgb,var(--porcelain) 35%,#fff);border:2px solid var(--ink);border-radius:14px;padding:.72rem .9rem;min-height:52px;width:100%}
+textarea{resize:vertical;min-height:96px}
+.row2{display:grid;gap:1.1rem;grid-template-columns:repeat(2,minmax(0,1fr))}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.15rem}
+.chips input{position:absolute;opacity:0;width:1px;height:1px;min-height:0;pointer-events:none}
+.chips label{padding:.55rem 1rem;border:2px solid var(--ink);border-radius:999px;cursor:pointer;font-weight:600;font-size:var(--step--1);transition:background-color .2s,color .2s}
+.chips input:checked+label{background:var(--ink);color:var(--porcelain)}
+.chips input:focus-visible+label{outline:3px solid var(--ivy);outline-offset:2px}
+.form-error{min-height:1.4em;color:#9E3A1E;font-weight:700}
+.res-out{margin-top:1.6rem;border:3px solid var(--ink);border-radius:24px;padding:1.4rem;background:color-mix(in srgb,var(--lamp) 20%,var(--porcelain));position:relative;outline:none;animation:fadeUp .5s cubic-bezier(.2,.8,.2,1)}
+.res-out h3{font-size:var(--step-2)}
+.res-msg{margin:.9rem 0 .4rem;font-size:var(--step-1);font-weight:600}
+.visit{border-radius:26px;background:var(--espresso);color:var(--porcelain);padding:clamp(1.4rem,1.1rem + 1vw,2rem)}
+.visit h3{font-size:var(--step-2)}
+.addr{margin:.8rem 0 1.2rem;font-size:var(--step-1)}
+.visit dl{display:grid;gap:0;margin:1.4rem 0 0}
+.visit dl div{display:flex;justify-content:space-between;gap:1rem;border-top:1px solid color-mix(in srgb,var(--porcelain) 15%,transparent);padding:.6rem 0}
+.visit dt{color:color-mix(in srgb,var(--porcelain) 70%,transparent)}
+.visit dd{margin:0;font-weight:700;text-align:right;font-variant-numeric:tabular-nums}
+
+/* ---------- subsol ---------- */
+.foot{padding:clamp(3rem,2rem + 4vw,5rem) 0 2.2rem;overflow:hidden}
+.giant{font-family:var(--font-display);font-weight:800;font-size:clamp(4.6rem,24vw,21rem);line-height:.9;letter-spacing:-.02em;margin:0 0 2.2rem;text-align:center;color:transparent;-webkit-text-stroke:2px color-mix(in srgb,var(--porcelain) 55%,transparent);background:linear-gradient(var(--lamp),var(--lamp)) no-repeat bottom/100% var(--fill,0%);-webkit-background-clip:text;background-clip:text}
+.foot-row{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1.6rem}
+.foot-brand{display:flex;align-items:center;gap:1.2rem}
+.foot-logo{width:120px;height:auto}
+.foot-slogan{font-family:var(--font-display);font-weight:700;font-size:var(--step-1)}
+.fine{margin-top:2.2rem;font-size:.8rem;max-width:72ch;color:color-mix(in srgb,var(--porcelain) 60%,transparent)}
+
+/* ---------- elemente plutitoare ---------- */
+.scroll-die{position:fixed;right:16px;bottom:16px;z-index:40;width:54px;height:54px;border-radius:17px;border:1px solid color-mix(in srgb,var(--porcelain) 16%,transparent);background:var(--espresso);box-shadow:0 12px 30px rgba(0,0,0,.35);cursor:pointer;display:grid;place-items:center;opacity:0;pointer-events:none;translate:0 24px;transition:opacity .35s,translate .35s;perspective:400px}
+.scroll-die.show{opacity:1;pointer-events:auto;translate:0 0}
+.scroll-die .die-slot{position:relative}
+.scroll-die .die{--s:26px;transition-duration:.9s}
+.toast{position:fixed;left:50%;bottom:84px;z-index:70;transform:translate(-50%,28px);opacity:0;visibility:hidden;width:max-content;max-width:min(92vw,30rem);background:var(--porcelain);color:var(--ink);border:2px solid var(--ink);border-radius:16px;padding:.8rem 1.05rem;font-weight:600;box-shadow:0 18px 40px -12px rgba(0,0,0,.45);transition:transform .45s cubic-bezier(.2,.9,.3,1.2),opacity .3s,visibility 0s linear .45s}
+.toast.show{transform:translate(-50%,0);opacity:1;visibility:visible;transition:transform .45s cubic-bezier(.2,.9,.3,1.2),opacity .3s,visibility 0s}
+.cursor{position:fixed;left:0;top:0;width:14px;height:14px;border-radius:50%;background:var(--porcelain);mix-blend-mode:difference;pointer-events:none;z-index:200;opacity:0;transition:width .25s,height .25s,opacity .25s;display:none}
+.has-cursor .cursor{display:block}
+.cursor.show{opacity:1}
+.cursor.big{width:46px;height:46px}
+
+/* ---------- intrări la scroll (doar pentru ce era sub ecran la încărcare) ---------- */
+.cat.in{animation:deal .75s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i,0) * 80ms)}
+@keyframes deal{from{transform:translateY(48px) rotate(-3deg);opacity:0}}
+.shelf.in .box{animation:boxIn .7s cubic-bezier(.3,1.4,.5,1) both;animation-delay:calc(var(--i,0) * 45ms)}
+@keyframes boxIn{from{transform:translateY(-46px);opacity:0}}
+.week.in .open{animation:grow .9s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i,0) * 70ms)}
+.week.in .ev{animation:fadeIn .5s both;animation-delay:calc(.55s + var(--i,0) * 70ms)}
+@keyframes grow{from{transform:scaleX(0)}}
+@keyframes fadeIn{from{opacity:0}}
+.stamps.in .stamp.on{animation:stampIn .5s cubic-bezier(.2,1.6,.4,1) both;animation-delay:calc(var(--i,0) * 90ms)}
+.place-media.in img{animation:unveil 1.2s cubic-bezier(.2,.8,.2,1) both}
+@keyframes unveil{from{clip-path:inset(0 0 100% 0)}}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  .cup .steam{opacity:.7}
+}
+</style>
 </head>
 <body>
-    <div class="center-content">
-        <h1></h1>
-        <a href="https://www.facebook.com/photo/?fbid=7365468416867720&set=a.115448761869758" class="button-link">Apas-o pe mama lui Utu</a>
+
+<header class="nav" id="top-nav">
+  <a class="brand" href="#acasa"><img src="img/mark-light.png" alt="" width="262" height="221">DICE</a>
+  <nav aria-label="Secțiuni">
+    <a href="#meniu">Meniu</a>
+    <a href="#jocuri">Jocuri</a>
+    <a href="#program">Program</a>
+    <a href="#club">Club</a>
+  </nav>
+  <a class="btn btn-lamp nav-cta" href="#rezervari">Rezervă</a>
+  <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Deschide meniul">
+    <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="5" cy="5" r="2" fill="currentColor"/><circle cx="15" cy="5" r="2" fill="currentColor"/><circle cx="10" cy="10" r="2" fill="currentColor"/><circle cx="5" cy="15" r="2" fill="currentColor"/><circle cx="15" cy="15" r="2" fill="currentColor"/></svg>
+  </button>
+</header>
+
+<div class="sheet" id="mobile-menu" hidden>
+  <button class="sheet-close" id="sheet-close" type="button" aria-label="Închide meniul">
+    <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 4l12 12M16 4L4 16" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+  </button>
+  <a href="#meniu" style="--i:0">Meniu</a>
+  <a href="#jocuri" style="--i:1">Jocuri</a>
+  <a href="#program" style="--i:2">Program</a>
+  <a href="#club" style="--i:3">Club</a>
+  <a href="#rezervari" style="--i:4">Rezervă o masă</a>
+  <p class="sheet-foot">Strada Ștefan cel Mare nr. 12, Piatra-Neamț</p>
+</div>
+
+<main>
+<section class="hero dark" id="acasa" data-face="1" aria-labelledby="hero-title">
+  <div class="wrap hero-grid">
+    <p class="status js-status" data-state="open"><span class="status-dot"></span><span class="status-text">Deschis în fiecare zi</span></p>
+
+    <div class="stage" id="hero-stage">
+      <span class="pool" aria-hidden="true"></span>
+      <span class="cone" aria-hidden="true"></span>
+      <span class="lamp" aria-hidden="true"></span>
+      <button class="dice-throw" id="hero-throw" type="button" aria-label="Aruncă zarurile">
+        <span class="die-slot big"><span class="hopper"><span class="floater"><span class="die" id="die-a" aria-hidden="true"></span></span></span></span>
+        <span class="die-slot small"><span class="hopper"><span class="floater"><span class="die" id="die-b" aria-hidden="true"></span></span></span></span>
+      </button>
+      <span class="floor" aria-hidden="true"></span>
+      <p class="stage-hint">Atinge zarurile</p>
     </div>
-    
-    <div class="gallery">
-        <img src="https://imgur.com/a/tIQTpn1 alt="Radu Hobi>
-        <img src="https://imgur.com/a/hi7YJ7O" alt="Radu">
-        <img src="https://imgur.com/a/Bz73PKn" alt="Eduard">
-        <img src="https://imgur.com/a/ZydTuCM" alt="EDI">
-        <img src="https://imgur.com/a/KugWrFL" alt="Andra">
+
+    <div class="hero-copy">
+      <h1 id="hero-title"><span class="line"><span lang="en">Good Coffee.</span></span><span class="line"><span lang="en">Good Vibes.</span></span></h1>
+      <p class="lead">Cafea de specialitate, deserturi făcute în casă și peste 100 de jocuri de societate, pe Strada Ștefan cel Mare, în Piatra-Neamț.</p>
+      <p class="cd-title" id="cd-title">Până la următorul Board Game Night</p>
+      <div class="countdown" id="countdown" role="timer" aria-label="Timpul rămas până la următorul Board Game Night">
+        <div class="cd-unit"><span class="cd-num" data-unit="d">4</span><span class="cd-label">zile</span></div>
+        <div class="cd-unit"><span class="cd-num" data-unit="h">04</span><span class="cd-label">ore</span></div>
+        <div class="cd-unit"><span class="cd-num" data-unit="m">13</span><span class="cd-label">minute</span></div>
+        <div class="cd-unit"><span class="cd-num" data-unit="s">00</span><span class="cd-label">secunde</span></div>
+      </div>
+      <p class="cd-caption muted" id="cd-caption">Vineri, de la 18:00. Bilet de 25 de lei, cu o băutură inclusă.</p>
+      <div class="actions">
+        <a class="btn btn-lamp" href="#meniu">Vezi meniul</a>
+        <a class="btn btn-ghost" href="#rezervari">Rezervă o masă de joc</a>
+      </div>
     </div>
+  </div>
+</section>
+
+<div class="marquee" aria-hidden="true">
+  <div class="mq mq-a"><div class="mq-track">
+    <span>Espresso 10 lei</span><i class="pip"></i><span>Dubai Coffee 20 lei</span><i class="pip"></i><span>Board Game Night în fiecare vineri</span><i class="pip"></i><span>Oreo Frappe 17 lei</span><i class="pip"></i><span>Peste 100 de jocuri</span><i class="pip"></i><span>Cheesecake 18 lei</span><i class="pip"></i><span>Family Sunday</span><i class="pip"></i><span>Flat White 17 lei</span><i class="pip"></i>
+  </div></div>
+  <div class="mq mq-b"><div class="mq-track">
+    <span>Good Coffee</span><i class="pip"></i><span class="ol">Good Vibes</span><i class="pip"></i><span>Coffee &amp; More</span><i class="pip"></i><span class="ol">Roll the Dice</span><i class="pip"></i>
+  </div></div>
+</div>
+
+<section class="band" id="meniu" data-face="2" aria-labelledby="menu-title">
+  <div class="wrap">
+    <div class="roll">
+      <div class="roll-copy">
+        <h2 id="roll-title">Nu știi ce să comanzi? Dă cu zarul.</h2>
+        <p class="muted">Fiecare față a zarului e o categorie din meniu. Zarul alege categoria, noi îți recomandăm ceva din ea.</p>
+        <ol class="faces-legend">
+          <li data-n="1"><span class="pf" data-n="1" aria-hidden="true"></span>Cafea</li>
+          <li data-n="2"><span class="pf" data-n="2" aria-hidden="true"></span>Specialități DICE</li>
+          <li data-n="3"><span class="pf" data-n="3" aria-hidden="true"></span>Frappe &amp; Milkshake</li>
+          <li data-n="4"><span class="pf" data-n="4" aria-hidden="true"></span>Ceaiuri</li>
+          <li data-n="5"><span class="pf" data-n="5" aria-hidden="true"></span>Răcoritoare</li>
+          <li data-n="6"><span class="pf" data-n="6" aria-hidden="true"></span>Deserturi</li>
+        </ol>
+        <button class="btn btn-ink" id="roll-btn" type="button">Aruncă zarul</button>
+        <p class="roll-result" id="roll-result" aria-live="polite">Apasă pe buton sau direct pe zar.</p>
+      </div>
+      <div class="roll-stage" id="roll-stage">
+        <span class="tray" aria-hidden="true"></span>
+        <span class="floor" aria-hidden="true"></span>
+        <button class="big-die" id="roll-die-btn" type="button" aria-label="Aruncă zarul pentru o recomandare"><span class="die-slot"><span class="hopper"><span class="die" id="die-c" aria-hidden="true"></span></span></span></button>
+      </div>
+    </div>
+
+    <div class="menu-head">
+      <div>
+        <h2 id="menu-title">Meniul</h2>
+        <p class="muted">Prețurile sunt în lei și includ TVA.</p>
+      </div>
+      <svg class="cup" viewBox="0 0 120 120" aria-hidden="true">
+        <path class="steam s1" d="M44 34c-6-7 6-11 0-19"/>
+        <path class="steam s2" d="M60 34c-6-7 6-11 0-19"/>
+        <path class="steam s3" d="M76 34c-6-7 6-11 0-19"/>
+        <path d="M26 48h68v20c0 19-15 34-34 34S26 87 26 68z" fill="none" stroke="currentColor" stroke-width="4.5" stroke-linejoin="round"/>
+        <path d="M94 56h6a10 10 0 0 1 0 20h-8" fill="none" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+        <path d="M18 110h84" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+        <circle cx="50" cy="70" r="4" fill="currentColor"/><circle cx="70" cy="70" r="4" fill="currentColor"/>
+      </svg>
+    </div>
+
+    <div class="board">
+      <article class="cat" id="cat-1">
+        <h3><span class="pf" data-n="1" aria-hidden="true"></span>Cafea</h3>
+        <ul>
+          <li class="item" id="m-espresso"><span class="nm">Espresso</span><span class="dots"></span><span class="pr">10 lei</span><span class="dt">30 ml</span></li>
+          <li class="item" id="m-americano"><span class="nm">Americano</span><span class="dots"></span><span class="pr">12 lei</span><span class="dt">200 ml</span></li>
+          <li class="item" id="m-cappuccino"><span class="nm">Cappuccino</span><span class="dots"></span><span class="pr">14 lei</span><span class="dt">200 ml</span></li>
+          <li class="item" id="m-latte"><span class="nm">Latte</span><span class="dots"></span><span class="pr">16 lei</span><span class="dt">300 ml</span></li>
+          <li class="item" id="m-flat-white"><span class="nm">Flat White</span><span class="dots"></span><span class="pr">17 lei</span><span class="dt">180 ml</span></li>
+          <li class="item" id="m-iced-coffee"><span class="nm">Iced Coffee</span><span class="dots"></span><span class="pr">16 lei</span><span class="dt">350 ml, cu gheață</span></li>
+        </ul>
+      </article>
+      <article class="cat" id="cat-2">
+        <h3><span class="pf" data-n="2" aria-hidden="true"></span>Specialități DICE</h3>
+        <ul>
+          <li class="item" id="m-dice-latte"><span class="nm">Dice Latte</span><span class="dots"></span><span class="pr">18 lei</span><span class="dt">caramel sau vanilie, 350 ml</span></li>
+          <li class="item" id="m-dubai-coffee"><span class="nm">Dubai Coffee</span><span class="dots"></span><span class="pr">20 lei</span><span class="dt">fistic și ciocolată, 350 ml</span></li>
+          <li class="item" id="m-brown-sugar-latte"><span class="nm">Brown Sugar Latte</span><span class="dots"></span><span class="pr">18 lei</span><span class="dt">350 ml</span></li>
+          <li class="item" id="m-cookies-coffee"><span class="nm">Cookies Coffee</span><span class="dots"></span><span class="pr">19 lei</span><span class="dt">350 ml</span></li>
+        </ul>
+      </article>
+      <article class="cat" id="cat-3">
+        <h3><span class="pf" data-n="3" aria-hidden="true"></span>Frappe &amp; Milkshake</h3>
+        <ul>
+          <li class="item" id="m-frappe"><span class="nm">Frappe</span><span class="dots"></span><span class="pr">16 lei</span><span class="dt">400 ml</span></li>
+          <li class="item" id="m-oreo-frappe"><span class="nm">Oreo Frappe</span><span class="dots"></span><span class="pr">17 lei</span><span class="dt">400 ml</span></li>
+          <li class="item" id="m-kinder-frappe"><span class="nm">Kinder Frappe</span><span class="dots"></span><span class="pr">17 lei</span><span class="dt">400 ml</span></li>
+          <li class="item" id="m-milkshake"><span class="nm">Milkshake</span><span class="dots"></span><span class="pr">16 lei</span><span class="dt">ciocolată, vanilie sau căpșuni, 400 ml</span></li>
+        </ul>
+      </article>
+      <article class="cat" id="cat-4">
+        <h3><span class="pf" data-n="4" aria-hidden="true"></span>Ceaiuri</h3>
+        <ul>
+          <li class="item" id="m-ceai-clasic"><span class="nm">Ceai clasic</span><span class="dots"></span><span class="pr">10 lei</span><span class="dt">300 ml</span></li>
+          <li class="item" id="m-ceai-verde"><span class="nm">Ceai verde</span><span class="dots"></span><span class="pr">11 lei</span><span class="dt">300 ml</span></li>
+          <li class="item" id="m-ceai-fructe"><span class="nm">Ceai de fructe</span><span class="dots"></span><span class="pr">11 lei</span><span class="dt">300 ml</span></li>
+          <li class="item" id="m-tea-latte"><span class="nm">Tea Latte</span><span class="dots"></span><span class="pr">14 lei</span><span class="dt">300 ml</span></li>
+        </ul>
+      </article>
+      <article class="cat" id="cat-5">
+        <h3><span class="pf" data-n="5" aria-hidden="true"></span>Răcoritoare</h3>
+        <ul>
+          <li class="item" id="m-limonada"><span class="nm">Limonadă</span><span class="dots"></span><span class="pr">14 lei</span><span class="dt">400 ml</span></li>
+          <li class="item" id="m-ice-tea"><span class="nm">Ice Tea</span><span class="dots"></span><span class="pr">12 lei</span><span class="dt">400 ml</span></li>
+          <li class="item" id="m-fresh"><span class="nm">Fresh natural</span><span class="dots"></span><span class="pr">15 lei</span><span class="dt">portocale sau grapefruit, 300 ml</span></li>
+          <li class="item" id="m-apa"><span class="nm">Apă plată sau minerală</span><span class="dots"></span><span class="pr">7 lei</span><span class="dt">500 ml</span></li>
+        </ul>
+      </article>
+      <article class="cat" id="cat-6">
+        <h3><span class="pf" data-n="6" aria-hidden="true"></span>Deserturi</h3>
+        <ul>
+          <li class="item" id="m-cheesecake"><span class="nm">Cheesecake</span><span class="dots"></span><span class="pr">18 lei</span><span class="dt">150 g</span></li>
+          <li class="item" id="m-tiramisu"><span class="nm">Tiramisu</span><span class="dots"></span><span class="pr">17 lei</span><span class="dt">150 g</span></li>
+          <li class="item" id="m-prajitura"><span class="nm">Prăjitura casei</span><span class="dots"></span><span class="pr">16 lei</span><span class="dt">120 g, făcută la noi</span></li>
+          <li class="item" id="m-croissant"><span class="nm">Croissant</span><span class="dots"></span><span class="pr">10 lei</span><span class="dt">80 g</span></li>
+        </ul>
+      </article>
+    </div>
+    <p class="menu-note small muted">Avem și lapte vegetal, de ovăz sau migdale. Spune-ne la comandă.</p>
+  </div>
+</section>
+
+<section class="band dark" id="jocuri" data-face="3" aria-labelledby="games-title">
+  <div class="wrap games">
+    <div class="games-copy">
+      <h2 id="games-title">Ia un joc de pe raft</h2>
+      <p>Avem peste 100 de jocuri de societate. Le folosești gratuit dacă fiecare persoană de la masă comandă de cel puțin 20 de lei.</p>
+      <ul class="rules">
+        <li>Vineri și sâmbătă seara, mesele de joc se rezervă pe câte 3 ore.</li>
+        <li>Nu știi regulile? Cineva din echipă ți le explică în câteva minute.</li>
+        <li>Avem 4 mese mari, potrivite pentru grupuri de până la 8 persoane.</li>
+      </ul>
+    </div>
+
+    <div>
+      <div class="shelf-wrap">
+        <div class="shelf" id="shelf" role="group" aria-label="Raftul cu jocuri, pe categorii">
+          <span class="box deco" aria-hidden="true" style="--h:96px;--w:26px;--c:color-mix(in srgb,var(--porcelain) 22%,var(--espresso))"></span>
+          <button class="box" type="button" data-cat="party" aria-pressed="false" style="--h:128px;--w:42px;--c:var(--lamp)"><span>Party</span></button>
+          <button class="box" type="button" data-cat="strategie" aria-pressed="false" style="--h:150px;--w:46px;--c:var(--porcelain)"><span>Strategie</span></button>
+          <span class="box deco" aria-hidden="true" style="--h:110px;--w:20px;--c:color-mix(in srgb,var(--ivy) 55%,var(--porcelain))"></span>
+          <button class="box" type="button" data-cat="coop" aria-pressed="false" style="--h:158px;--w:40px;--c:var(--ivy);--t:var(--porcelain)"><span>Cooperative</span></button>
+          <button class="box" type="button" data-cat="cuvinte" aria-pressed="false" style="--h:112px;--w:38px;--c:color-mix(in srgb,var(--lamp) 55%,var(--espresso));--t:var(--porcelain)"><span>Cuvinte</span></button>
+          <button class="box" type="button" data-cat="familie" aria-pressed="false" style="--h:124px;--w:44px;--c:color-mix(in srgb,var(--ivy) 45%,var(--porcelain))"><span>Familie</span></button>
+          <button class="box" type="button" data-cat="doi" aria-pressed="false" style="--h:104px;--w:34px;--c:var(--porcelain)"><span>În doi</span></button>
+          <button class="box lean" type="button" data-cat="clasice" aria-pressed="false" style="--h:134px;--w:40px;--c:var(--lamp)"><span>Clasice</span></button>
+        </div>
+        <div class="plank" aria-hidden="true"></div>
+      </div>
+      <p class="shelf-hint small muted">Atinge o cutie ca să vezi ce fel de jocuri sunt.</p>
+    </div>
+
+    <dl class="stats games-wide" id="stats">
+      <div><dt>jocuri pe raft</dt><dd data-count="100" data-suffix="+">100+</dd></div>
+      <div><dt>mese mari pentru grupuri</dt><dd data-count="4">4</dd></div>
+      <div><dt>locuri înăuntru</dt><dd data-count="50">50</dd></div>
+      <div><dt>locuri pe terasă, vara</dt><dd data-count="24">24</dd></div>
+    </dl>
+
+    <ul class="cats games-wide">
+      <li data-cat="party"><h3>Party <span class="chip">4–10 jucători</span><span class="chip">15–30 min</span></h3><p>Jocuri rapide, cu multe râsete, bune pentru grupuri mari.</p></li>
+      <li data-cat="strategie"><h3>Strategie <span class="chip">2–4 jucători</span><span class="chip">45–90 min</span></h3><p>Pentru cei care vor să plănuiască fiecare mutare.</p></li>
+      <li data-cat="coop"><h3>Cooperative <span class="chip">2–5 jucători</span><span class="chip">30–60 min</span></h3><p>Jucați împreună împotriva jocului și câștigați sau pierdeți toți.</p></li>
+      <li data-cat="cuvinte"><h3>Cuvinte și desen <span class="chip">3–8 jucători</span><span class="chip">20–40 min</span></h3><p>Ghicești, desenezi și explici fără să spui cuvântul.</p></li>
+      <li data-cat="familie"><h3>Familie <span class="chip">2–6 jucători</span><span class="chip">15–30 min</span></h3><p>Reguli simple, potrivite și pentru copii.</p></li>
+      <li data-cat="doi"><h3>În doi <span class="chip">2 jucători</span><span class="chip">20–40 min</span></h3><p>Dueluri scurte pentru o seară în doi.</p></li>
+      <li data-cat="clasice"><h3>Clasice <span class="chip">2–4 jucători</span></h3><p>Șah, table, remi și cărți de joc.</p></li>
+    </ul>
+  </div>
+</section>
+
+<section class="band" id="program" data-face="4" aria-labelledby="program-title">
+  <div class="wrap">
+    <div class="program-head">
+      <h2 id="program-title">Programul și serile de joc</h2>
+      <p class="status js-status" data-state="open"><span class="status-dot"></span><span class="status-text">Deschis în fiecare zi</span></p>
+    </div>
+
+    <div class="week" id="week">
+      <div class="week-axis" aria-hidden="true"><span style="--s:0">07</span><span style="--s:17.647">10</span><span style="--s:35.294">13</span><span style="--s:52.941">16</span><span style="--s:70.588">19</span><span style="--s:88.235">22</span><span style="--s:100">24</span></div>
+      <div class="day" data-wd="1"><div class="day-name"><b>Luni</b><span>07:30–22:00</span></div><div class="track" aria-hidden="true"><span class="open" style="--s:2.941;--w:85.294"></span><span class="ev ev-morning" style="--s:2.941;--w:8.824"></span><span class="ev ev-student" style="--s:41.176;--w:17.647"></span></div></div>
+      <div class="day" data-wd="2"><div class="day-name"><b>Marți</b><span>07:30–22:00</span></div><div class="track" aria-hidden="true"><span class="open" style="--s:2.941;--w:85.294"></span><span class="ev ev-morning" style="--s:2.941;--w:8.824"></span><span class="ev ev-student" style="--s:41.176;--w:17.647"></span></div></div>
+      <div class="day" data-wd="3"><div class="day-name"><b>Miercuri</b><span>07:30–22:00</span></div><div class="track" aria-hidden="true"><span class="open" style="--s:2.941;--w:85.294"></span><span class="ev ev-morning" style="--s:2.941;--w:8.824"></span><span class="ev ev-student" style="--s:41.176;--w:17.647"></span></div></div>
+      <div class="day" data-wd="4"><div class="day-name"><b>Joi</b><span>07:30–22:00</span></div><div class="track" aria-hidden="true"><span class="open" style="--s:2.941;--w:85.294"></span><span class="ev ev-morning" style="--s:2.941;--w:8.824"></span><span class="ev ev-student" style="--s:41.176;--w:17.647"></span></div></div>
+      <div class="day" data-wd="5"><div class="day-name"><b>Vineri</b><span>07:30–23:00</span></div><div class="track" aria-hidden="true"><span class="open" style="--s:2.941;--w:91.176"></span><span class="ev ev-morning" style="--s:2.941;--w:8.824"></span><span class="ev ev-night" style="--s:64.706;--w:29.412"></span></div></div>
+      <div class="day" data-wd="6"><div class="day-name"><b>Sâmbătă</b><span>09:00–23:00</span></div><div class="track" aria-hidden="true"><span class="open" style="--s:11.765;--w:82.353"></span><span class="ev ev-tour" style="--s:58.824;--w:35.294"></span></div></div>
+      <div class="day" data-wd="7"><div class="day-name"><b>Duminică</b><span>09:00–21:00</span></div><div class="track" aria-hidden="true"><span class="open" style="--s:11.765;--w:70.588"></span><span class="ev ev-family" style="--s:17.647;--w:23.529"></span></div></div>
+    </div>
+    <p class="week-note small muted">Pe 24 și 31 decembrie avem program 09:00–16:00. Suntem închiși pe 25 decembrie, 1 ianuarie și în prima zi de Paște.</p>
+
+    <ul class="events">
+      <li><span class="sw sw-morning" aria-hidden="true"></span><h3>Happy Morning</h3><span class="when">Luni–vineri, 07:30–09:00</span><span class="what">20% reducere la cafeaua to-go.</span></li>
+      <li><span class="sw sw-student" aria-hidden="true"></span><h3>Student Hours</h3><span class="when">Luni–joi, 14:00–17:00</span><span class="what">15% reducere cu legitimația de elev sau student.</span></li>
+      <li><span class="sw sw-night" aria-hidden="true"></span><h3>Board Game Night</h3><span class="when">Vineri, 18:00–23:00</span><span class="what">Bilet de 25 de lei, cu o băutură inclusă.</span></li>
+      <li><span class="sw sw-tour" aria-hidden="true"></span><h3>Turneu lunar</h3><span class="when">Prima sâmbătă din lună, de la 17:00</span><span class="what">Premii în vouchere DICE.</span></li>
+      <li><span class="sw sw-family" aria-hidden="true"></span><h3>Family Sunday</h3><span class="when">Duminică, 10:00–14:00</span><span class="what">Jocuri pentru copii și părinți.</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="band green" id="club" data-face="5" aria-labelledby="club-title">
+  <div class="wrap club">
+    <div class="club-copy">
+      <h2 id="club-title">Clubul Roll the Dice</h2>
+      <p>Primești o ștampilă pe cardul digital la fiecare cafea. A zecea e din partea casei.</p>
+      <ul class="perks">
+        <li><span class="pf" data-n="6" aria-hidden="true"></span><span>La orice bon de peste 30 de lei arunci zarul la casă. Dacă pică 6, desertul e gratuit.</span></li>
+        <li><span class="pf" data-n="1" aria-hidden="true"></span><span>De ziua ta ai 20% reducere la toată comanda.</span></li>
+        <li><span class="pf" data-n="2" aria-hidden="true"></span><span>Cardul stă în telefon, așa că nu-l mai uiți acasă.</span></li>
+      </ul>
+    </div>
+    <button class="card" id="loyalty" type="button">
+      <span class="card-top"><span>DICE Club</span><img src="img/mark-dark.png" alt="" width="262" height="221"></span>
+      <span class="stamps" id="stamps">
+        <span class="stamp on"></span><span class="stamp on"></span><span class="stamp on"></span><span class="stamp on"></span><span class="stamp on"></span>
+        <span class="stamp on"></span><span class="stamp on"></span><span class="stamp"></span><span class="stamp"></span>
+        <span class="stamp gift"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M9 15h20v6c0 6-4.5 11-10 11S9 27 9 21z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><path d="M29 17h2a4 4 0 0 1 0 8h-2.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M15 10c-1.5-2 1.5-3 0-5M23 10c-1.5-2 1.5-3 0-5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></span>
+      </span>
+      <span class="card-foot"><span id="card-count">7 din 10 cafele</span><span>Apasă ca să pui o ștampilă</span></span>
+    </button>
+  </div>
+</section>
+
+<section class="place dark" aria-labelledby="place-title">
+  <div class="place-media" id="place-media"><img src="img/interior.jpg" alt="Interiorul DICE: canapele gri, o masă rotundă cu o lumânare, plante și logo-ul cu zaruri pe peretele luminat de un spot" width="756" height="1024"></div>
+  <div class="place-copy">
+    <h2 id="place-title">Un loc în care stai mai mult decât ai plănuit</h2>
+    <p>Canapele moi, lumină caldă, plante și zarurile noastre pe perete. Avem 50 de locuri înăuntru și 24 pe terasă, din aprilie până în octombrie.</p>
+    <div class="actions"><a class="btn btn-line-light" href="#rezervari">Rezervă o masă</a></div>
+  </div>
+</section>
+
+<section class="band" id="rezervari" data-face="6" aria-labelledby="res-title">
+  <div class="wrap res">
+    <div>
+      <h2 id="res-title">Rezervă o masă</h2>
+      <p class="res-intro muted">Completează detaliile și îți pregătim mesajul de rezervare. Îl trimiți apoi pe Instagram sau îl citești la telefon.</p>
+      <form id="res-form" novalidate>
+        <div class="field"><label for="f-name">Numele tău</label><input id="f-name" name="name" type="text" autocomplete="name"></div>
+        <div class="row2">
+          <div class="field"><label for="f-date">Data</label><input id="f-date" name="date" type="date"></div>
+          <div class="field"><label for="f-time">Ora</label><select id="f-time" name="time"></select></div>
+        </div>
+        <div class="field"><label for="f-people">Câte persoane</label><select id="f-people" name="people"></select></div>
+        <fieldset class="field">
+          <legend>Ce fel de masă</legend>
+          <div class="chips">
+            <input type="radio" id="t-normal" name="type" value="normal" checked><label for="t-normal">Masă obișnuită</label>
+            <input type="radio" id="t-games" name="type" value="games"><label for="t-games">Masă de joc</label>
+            <input type="radio" id="t-night" name="type" value="night"><label for="t-night">Board Game Night</label>
+            <input type="radio" id="t-private" name="type" value="private"><label for="t-private">Eveniment privat</label>
+          </div>
+        </fieldset>
+        <div class="field"><label for="f-note">Ceva ce ar trebui să știm? (opțional)</label><textarea id="f-note" name="note" rows="3"></textarea></div>
+        <p class="form-error" id="form-error" role="alert"></p>
+        <div><button class="btn btn-ink" type="submit">Pregătește rezervarea</button></div>
+      </form>
+      <div class="res-out" id="res-out" tabindex="-1" hidden>
+        <h3>Mesajul tău e gata</h3>
+        <p class="res-msg" id="res-msg"></p>
+        <div class="actions">
+          <button class="btn btn-ink" id="copy-btn" type="button">Copiază mesajul</button>
+          <button class="btn btn-line" id="edit-btn" type="button">Modifică rezervarea</button>
+        </div>
+        <p class="small muted" style="margin-top:1rem">Trimite-l pe Instagram la @dice.coffee.pn sau sună la +40 733 456 900. Formularul doar pregătește mesajul; nu trimite nimic singur.</p>
+      </div>
+    </div>
+
+    <aside class="visit" aria-labelledby="visit-title">
+      <h3 id="visit-title">Unde ne găsești</h3>
+      <p class="addr">Strada Ștefan cel Mare nr. 12<br>Piatra-Neamț, județul Neamț</p>
+      <a class="btn btn-lamp" href="https://www.google.com/maps/search/?api=1&amp;query=Strada%20%C8%98tefan%20cel%20Mare%2012%2C%20Piatra-Neam%C8%9B">Deschide în Google Maps</a>
+      <dl>
+        <div><dt>Telefon</dt><dd>+40 733 456 900</dd></div>
+        <div><dt>E-mail</dt><dd>contact@dicecoffee.ro</dd></div>
+        <div><dt>Instagram</dt><dd>@dice.coffee.pn</dd></div>
+      </dl>
+      <dl>
+        <div><dt>Luni–joi</dt><dd>07:30–22:00</dd></div>
+        <div><dt>Vineri</dt><dd>07:30–23:00</dd></div>
+        <div><dt>Sâmbătă</dt><dd>09:00–23:00</dd></div>
+        <div><dt>Duminică</dt><dd>09:00–21:00</dd></div>
+      </dl>
+    </aside>
+  </div>
+</section>
+</main>
+
+<footer class="foot dark">
+  <div class="wrap">
+    <p class="giant" id="giant" aria-hidden="true">DICE</p>
+    <div class="foot-row">
+      <div class="foot-brand">
+        <img class="foot-logo" src="img/logo-light.png" alt="DICE Coffee &amp; More" width="491" height="398">
+        <div>
+          <p class="foot-slogan" lang="en">Good Coffee. Good Vibes.</p>
+          <p class="small muted">Strada Ștefan cel Mare nr. 12, Piatra-Neamț</p>
+        </div>
+      </div>
+      <a class="btn btn-line-light" href="#acasa">Înapoi sus</a>
+    </div>
+    <p class="fine">© 2026 SC DICE COFFEE &amp; MORE SRL. Site de prezentare pentru planul de afaceri DICE; telefonul, e-mailul și adresa sunt exemplele din plan.</p>
+  </div>
+</footer>
+
+<button class="scroll-die" id="scroll-die" type="button" aria-label="Înapoi sus"><span class="die-slot"><span class="die" id="die-d" aria-hidden="true"></span></span></button>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div class="cursor" aria-hidden="true"></div>
+
+<script>
+(() => {
+  'use strict';
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const fine = matchMedia('(pointer: fine)').matches;
+  const $ = (s, el = document) => el.querySelector(s);
+  const $$ = (s, el = document) => Array.from(el.querySelectorAll(s));
+  const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+  const rnd6 = () => 1 + Math.floor(Math.random() * 6);
+  const cap = s => s.charAt(0).toUpperCase() + s.slice(1);
+
+  /* ---------- fețe de zar ---------- */
+  const PIPS = {1: [5], 2: [1, 9], 3: [1, 5, 9], 4: [1, 3, 7, 9], 5: [1, 3, 5, 7, 9], 6: [1, 3, 4, 6, 7, 9]};
+  const pips = n => PIPS[n].map(p => '<i class="p' + p + '"></i>').join('');
+  $$('.pf').forEach(el => { el.innerHTML = pips(+el.dataset.n); });
+
+  const FACE = {1: [0, 0], 2: [0, -90], 3: [-90, 0], 4: [90, 0], 5: [0, 90], 6: [0, 180]};
+  const TILT = 'rotateX(-24deg) rotateY(32deg)';
+  function buildDie(el) {
+    let h = '<span class="core"></span><span class="core c1"></span><span class="core c2"></span>';
+    for (let n = 1; n <= 6; n++) h += '<span class="face f' + n + '">' + pips(n) + '</span>';
+    el.innerHTML = h; el._sx = 0; el._sy = 0; el._face = 1;
+  }
+  function place(el, face, sx, sy, instant) {
+    const r = FACE[face];
+    if (instant) el.style.transition = 'none';
+    el._sx = sx; el._sy = sy; el._face = face;
+    el.style.transform = TILT + ' rotateX(' + (r[0] + sx) + 'deg) rotateY(' + (r[1] + sy) + 'deg)';
+    if (instant) { void el.offsetWidth; el.style.transition = ''; }
+  }
+  function rollTo(el, face, turns) {
+    const t = turns || 2;
+    place(el, face, el._sx + 360 * (t + (Math.random() < .5 ? 1 : 0)), el._sy + 360 * Math.max(1, t - 1 + (Math.random() < .5 ? 1 : 0)));
+  }
+  function bump(el) { el.classList.remove('hop'); void el.offsetWidth; el.classList.add('hop'); }
+  $$('.die').forEach(buildDie);
+
+  /* ---------- mesaje scurte ---------- */
+  const toastEl = $('#toast'); let toastTimer;
+  function toast(msg) {
+    toastEl.textContent = msg; toastEl.classList.add('show');
+    clearTimeout(toastTimer); toastTimer = setTimeout(() => toastEl.classList.remove('show'), 4200);
+  }
+
+  /* ---------- hero: zarurile se rostogolesc la intrare și la atingere ---------- */
+  const hero = $('#acasa'), stage = $('#hero-stage');
+  const dA = $('#die-a'), dB = $('#die-b');
+  const startA = rnd6(), startB = rnd6();
+  place(dA, startA, -720, -360, true);
+  place(dB, startB, -360, -720, true);
+  requestAnimationFrame(() => requestAnimationFrame(() => { place(dA, startA, 0, 0); place(dB, startB, 0, 0); }));
+  let heroBusy = false;
+  $('#hero-throw').addEventListener('click', () => {
+    if (heroBusy) return; heroBusy = true;
+    const a = rnd6(), b = rnd6();
+    bump(stage); rollTo(dA, a, 2); rollTo(dB, b, 3);
+    setTimeout(() => {
+      heroBusy = false;
+      if (a === 6 || b === 6) toast('Ai dat 6! La casă, un 6 înseamnă desert gratuit la bonurile de peste 30 de lei.');
+      else if (a === b) toast('Dublă de ' + a + '! Mai aruncă o dată.');
+      else toast('Ai dat ' + a + ' și ' + b + '. Încearcă să prinzi un 6.');
+    }, reduce ? 60 : 1250);
+  });
+  if (fine && !reduce) {
+    hero.addEventListener('pointermove', e => {
+      const r = hero.getBoundingClientRect();
+      stage.style.setProperty('--px', ((e.clientX - r.left) / r.width - .5).toFixed(3));
+      stage.style.setProperty('--py', ((e.clientY - r.top) / r.height - .5).toFixed(3));
+    });
+    hero.addEventListener('pointerleave', () => { stage.style.setProperty('--px', 0); stage.style.setProperty('--py', 0); });
+  }
+
+  /* ---------- zarul care alege din meniu ---------- */
+  const dC = $('#die-c'), rollStage = $('#roll-stage'), out = $('#roll-result');
+  place(dC, 5, 0, 0, true);
+  const CAT = {1: 'Cafea', 2: 'Specialități DICE', 3: 'Frappe & Milkshake', 4: 'Ceaiuri', 5: 'Răcoritoare', 6: 'Deserturi'};
+  let rollBusy = false;
+  function rollMenu() {
+    if (rollBusy) return; rollBusy = true;
+    const n = rnd6();
+    bump(rollStage); rollTo(dC, n, 2);
+    out.textContent = 'Zarul se rostogolește…';
+    setTimeout(() => {
+      const cat = $('#cat-' + n), items = $$('.item', cat), it = items[Math.floor(Math.random() * items.length)];
+      $$('.picked').forEach(x => x.classList.remove('picked'));
+      cat.classList.add('picked'); it.classList.add('picked');
+      $$('.faces-legend li').forEach(li => li.classList.toggle('on', +li.dataset.n === n));
+      out.innerHTML = 'Ai dat <b>' + n + '</b>, adică ' + CAT[n] + '. Îți recomandăm <b>' + $('.nm', it).textContent + '</b>, ' + $('.pr', it).textContent + '. <a class="see" href="#' + it.id + '">Vezi în meniu</a>';
+      rollBusy = false;
+    }, reduce ? 60 : 1300);
+  }
+  $('#roll-btn').addEventListener('click', rollMenu);
+  $('#roll-die-btn').addEventListener('click', rollMenu);
+  out.addEventListener('click', e => {
+    const a = e.target.closest('a.see'); if (!a) return;
+    e.preventDefault();
+    const t = document.getElementById(a.getAttribute('href').slice(1));
+    if (t) t.scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block: 'center'});
+  });
+
+  /* ---------- zarul de jos arată secțiunea în care ești ---------- */
+  const dD = $('#die-d'), sDie = $('#scroll-die');
+  place(dD, 1, 0, 0, true);
+  sDie.addEventListener('click', () => scrollTo({top: 0, behavior: reduce ? 'auto' : 'smooth'}));
+  const navLinks = $$('.nav nav a');
+  const spy = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const f = +e.target.dataset.face;
+      if (f && f !== dD._face) rollTo(dD, f, 1);
+      navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id));
+    });
+  }, {rootMargin: '-45% 0px -50% 0px'});
+  $$('section[data-face]').forEach(s => spy.observe(s));
+
+  /* ---------- benzi rulante, accelerate de scroll ---------- */
+  const mqAnims = [];
+  $$('.mq-track').forEach((track, i) => {
+    const unit = track.innerHTML; let n = 1;
+    while (track.scrollWidth < innerWidth * 1.2 && n < 12) { track.insertAdjacentHTML('beforeend', unit); n++; }
+    track.insertAdjacentHTML('beforeend', track.innerHTML);
+    if (reduce || !track.animate) return;
+    const half = track.scrollWidth / 2;
+    const kf = i % 2 ? [{transform: 'translateX(-50%)'}, {transform: 'translateX(0)'}] : [{transform: 'translateX(0)'}, {transform: 'translateX(-50%)'}];
+    mqAnims.push(track.animate(kf, {duration: half / 55 * 1000, iterations: Infinity}));
+  });
+  let boost = 1, boosting = false;
+  const setRate = r => mqAnims.forEach(a => { if (a.updatePlaybackRate) a.updatePlaybackRate(r); else a.playbackRate = r; });
+  function decay() {
+    boost = 1 + (boost - 1) * .92; setRate(boost);
+    if (boost > 1.02) requestAnimationFrame(decay); else { boosting = false; boost = 1; setRate(1); }
+  }
+  function kick(dy) {
+    if (!mqAnims.length) return;
+    boost = Math.min(4.5, boost + Math.abs(dy) * .025);
+    if (!boosting && boost > 1.05) { boosting = true; requestAnimationFrame(decay); }
+  }
+
+  /* ---------- intrări: doar ce era sub ecran la încărcare ---------- */
+  $$('.cat').forEach((el, i) => el.style.setProperty('--i', i));
+  $$('.shelf .box').forEach((el, i) => el.style.setProperty('--i', i));
+  $$('.day').forEach((el, i) => el.style.setProperty('--i', i));
+  $$('.stamp.on').forEach((el, i) => el.style.setProperty('--i', i));
+  function countUp(el) {
+    const end = +el.dataset.count, suf = el.dataset.suffix || '', t0 = performance.now(), dur = 1200;
+    const step = t => { const p = Math.min(1, (t - t0) / dur); el.textContent = Math.round(end * (1 - Math.pow(1 - p, 3))) + suf; if (p < 1) requestAnimationFrame(step); };
+    requestAnimationFrame(step);
+  }
+  if (!reduce && 'IntersectionObserver' in window) {
+    const enter = new IntersectionObserver(entries => entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      enter.unobserve(e.target); e.target.classList.add('in');
+      if (e.target.id === 'stats') $$('[data-count]', e.target).forEach(countUp);
+    }), {rootMargin: '0px 0px 8% 0px'});
+    $$('.cat, #shelf, #week, #stats, #stamps, #place-media').forEach(el => {
+      if (el.getBoundingClientRect().top > innerHeight) enter.observe(el);
+    });
+  }
+
+  /* ---------- ora din Piatra-Neamț, program și numărătoare ---------- */
+  const WD = ['', 'luni', 'marți', 'miercuri', 'joi', 'vineri', 'sâmbătă', 'duminică'];
+  const MON = ['ianuarie', 'februarie', 'martie', 'aprilie', 'mai', 'iunie', 'iulie', 'august', 'septembrie', 'octombrie', 'noiembrie', 'decembrie'];
+  const HOURS = {1: [450, 1320], 2: [450, 1320], 3: [450, 1320], 4: [450, 1320], 5: [450, 1380], 6: [540, 1380], 7: [540, 1260]};
+  const hm = m => String(Math.floor(m / 60)).padStart(2, '0') + ':' + String(m % 60).padStart(2, '0');
+  function easter(y) { // Paștele ortodox
+    const a = y % 4, b = y % 7, c = y % 19, d = (19 * c + 15) % 30, e = (2 * a + 4 * b - d + 34) % 7;
+    const mo = Math.floor((d + e + 114) / 31), da = (d + e + 114) % 31 + 1;
+    const dt = new Date(Date.UTC(y, mo - 1, da + 13));
+    return [dt.getUTCMonth() + 1, dt.getUTCDate()];
+  }
+  function hoursFor(y, m, d, wd) {
+    const e = easter(y);
+    if ((m === 12 && d === 25) || (m === 1 && d === 1) || (m === e[0] && d === e[1])) return null;
+    if (m === 12 && (d === 24 || d === 31)) return [540, 960];
+    return HOURS[wd];
+  }
+  const tz = new Intl.DateTimeFormat('en-GB', {timeZone: 'Europe/Bucharest', year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric', weekday: 'short', hourCycle: 'h23'});
+  const WDMAP = {Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6, Sun: 7};
+  function partsAt(ts) {
+    const o = {}; tz.formatToParts(new Date(ts)).forEach(p => { o[p.type] = p.value; });
+    return {y: +o.year, m: +o.month, d: +o.day, h: (+o.hour) % 24, mi: +o.minute, wd: WDMAP[o.weekday]};
+  }
+  const nowRo = () => partsAt(Date.now());
+  function zonedToUtc(y, m, d, h, mi) { // ora din Piatra-Neamț -> moment UTC, cu ora de vară inclusă
+    const want = Date.UTC(y, m - 1, d, h, mi); let guess = want;
+    for (let i = 0; i < 3; i++) { const p = partsAt(guess); guess += want - Date.UTC(p.y, p.m - 1, p.d, p.h, p.mi); }
+    return guess;
+  }
+  function nextNight() { // următorul Board Game Night (vineri 18:00–23:00), sau cel în desfășurare
+    const n = nowRo(), t = n.h * 60 + n.mi, todayH = hoursFor(n.y, n.m, n.d, n.wd);
+    if (n.wd === 5 && todayH && todayH[1] >= 1380 && t >= 1080 && t < 1380) return {live: true, end: zonedToUtc(n.y, n.m, n.d, 23, 0)};
+    let k = (5 - n.wd + 7) % 7;
+    if (k === 0 && t >= 1080) k = 7;
+    for (let i = 0; i < 6; i++, k += 7) {
+      const dt = new Date(Date.UTC(n.y, n.m - 1, n.d + k)), y = dt.getUTCFullYear(), m = dt.getUTCMonth() + 1, d = dt.getUTCDate(), h = hoursFor(y, m, d, 5);
+      if (h && h[1] >= 1380) return {live: false, k: k, m: m, d: d, start: zonedToUtc(y, m, d, 18, 0)};
+    }
+    return {live: false, k: 7, m: n.m, d: n.d, start: Date.now() + 7 * 864e5};
+  }
+  function status() {
+    const n = nowRo(), t = n.h * 60 + n.mi, today = hoursFor(n.y, n.m, n.d, n.wd);
+    if (today && t >= today[0] && t < today[1]) return {state: 'open', text: 'Deschis acum, până la ' + hm(today[1])};
+    if (today && t < today[0]) return {state: 'closed', text: 'Închis acum. Deschidem azi la ' + hm(today[0])};
+    for (let k = 1; k <= 8; k++) {
+      const dt = new Date(Date.UTC(n.y, n.m - 1, n.d + k)), wd = (n.wd - 1 + k) % 7 + 1;
+      const h = hoursFor(dt.getUTCFullYear(), dt.getUTCMonth() + 1, dt.getUTCDate(), wd);
+      if (h) return {state: 'closed', text: 'Închis acum. Deschidem ' + (k === 1 ? 'mâine' : WD[wd]) + ' la ' + hm(h[0])};
+    }
+    return {state: 'closed', text: 'Închis acum'};
+  }
+  function paintStatus() {
+    const s = status();
+    $$('.js-status').forEach(el => { el.dataset.state = s.state; $('.status-text', el).textContent = s.text; });
+  }
+  function paintWeek() {
+    const n = nowRo(), t = n.h * 60 + n.mi;
+    $$('.day').forEach(r => r.classList.toggle('today', +r.dataset.wd === n.wd));
+    let mk = $('.now-mark');
+    if (t >= 420) {
+      if (!mk) { mk = document.createElement('span'); mk.className = 'now-mark'; mk.innerHTML = '<b>acum</b>'; }
+      $('.day[data-wd="' + n.wd + '"] .track').appendChild(mk);
+      mk.style.left = ((t - 420) / 1020 * 100).toFixed(2) + '%';
+    } else if (mk) mk.remove();
+  }
+  const cd = $('#countdown'), cdNums = {};
+  $$('[data-unit]', cd).forEach(el => { cdNums[el.dataset.unit] = el; });
+  function setNum(u, v, pad) {
+    const el = cdNums[u], str = pad ? String(v).padStart(2, '0') : String(v);
+    if (el.textContent === str) return;
+    el.textContent = str;
+    if (!reduce) { el.classList.remove('tick'); void el.offsetWidth; el.classList.add('tick'); }
+  }
+  const cdTitle = $('#cd-title'), cdCaption = $('#cd-caption');
+  let target = 0;
+  function planNight() {
+    const nn = nextNight();
+    target = nn.live ? nn.end : nn.start;
+    cd.setAttribute('aria-label', nn.live ? 'Timpul rămas din Board Game Night' : 'Timpul rămas până la următorul Board Game Night');
+    if (nn.live) {
+      cdTitle.textContent = 'Board Game Night e acum. Se termină în:';
+      cdCaption.textContent = 'Mai prinzi o partidă până la 23:00. Bilet de 25 de lei, cu o băutură inclusă.';
+    } else {
+      const when = nn.k === 0 ? 'Azi' : nn.k === 1 ? 'Mâine' : 'Vineri, ' + nn.d + ' ' + MON[nn.m - 1];
+      cdTitle.textContent = 'Până la următorul Board Game Night';
+      cdCaption.textContent = when + ', de la 18:00. Bilet de 25 de lei, cu o băutură inclusă.';
+    }
+  }
+  function tick() {
+    if (!target || Date.now() >= target) planNight();
+    const s = Math.max(0, Math.floor((target - Date.now()) / 1000));
+    setNum('d', Math.floor(s / 86400), false);
+    setNum('h', Math.floor(s % 86400 / 3600), true);
+    setNum('m', Math.floor(s % 3600 / 60), true);
+    setNum('s', s % 60, true);
+  }
+  tick(); paintStatus(); paintWeek();
+  setInterval(tick, 1000);
+  setInterval(() => { paintStatus(); paintWeek(); }, 30000);
+
+  /* ---------- raftul cu jocuri ---------- */
+  const boxes = $$('.shelf button.box'), catRows = $$('.cats li');
+  boxes.forEach(b => b.addEventListener('click', () => {
+    const on = !b.classList.contains('on');
+    boxes.forEach(x => { const me = on && x === b; x.classList.toggle('on', me); x.setAttribute('aria-pressed', String(me)); });
+    catRows.forEach(li => li.classList.toggle('on', on && li.dataset.cat === b.dataset.cat));
+  }));
+
+  /* ---------- scântei pentru momente reușite ---------- */
+  function burst(host, x, y) {
+    if (reduce || !host.animate) return;
+    const colors = ['var(--lamp)', 'var(--ivy)', 'var(--ink)', 'var(--porcelain)'];
+    for (let i = 0; i < 18; i++) {
+      const p = document.createElement('span');
+      p.className = 'spark'; p.style.left = x + 'px'; p.style.top = y + 'px'; p.style.background = colors[i % 4];
+      host.appendChild(p);
+      const a = i / 18 * Math.PI * 2, r = 70 + Math.random() * 80;
+      const anim = p.animate([
+        {transform: 'translate(-50%,-50%) scale(1)', opacity: 1},
+        {transform: 'translate(calc(-50% + ' + (Math.cos(a) * r).toFixed(1) + 'px), calc(-50% + ' + (Math.sin(a) * r).toFixed(1) + 'px)) scale(.3)', opacity: 0}
+      ], {duration: 800 + Math.random() * 500, easing: 'cubic-bezier(.2,.8,.2,1)'});
+      anim.onfinish = () => p.remove();
+    }
+  }
+
+  /* ---------- cardul de fidelitate ---------- */
+  const card = $('#loyalty'), stampEls = $$('.stamp', card), countEl = $('#card-count');
+  let stamps = 7;
+  function paintStamps(popIdx) {
+    stampEls.forEach((s, i) => {
+      s.classList.toggle('on', i < stamps);
+      if (i === popIdx) { s.classList.remove('pop'); void s.offsetWidth; s.classList.add('pop'); }
+    });
+    countEl.textContent = stamps >= 10 ? 'A zecea cafea e din partea casei!' : stamps + ' din 10 cafele';
+  }
+  card.addEventListener('click', () => {
+    if (stamps >= 10) return;
+    stamps++; paintStamps(stamps - 1);
+    if (stamps === 10) {
+      burst(card, card.offsetWidth / 2, card.offsetHeight / 2);
+      setTimeout(() => { stamps = 0; paintStamps(-1); }, 2800);
+    }
+  });
+
+  /* ---------- rezervări ---------- */
+  const form = $('#res-form'), err = $('#form-error'), resOut = $('#res-out'), msgEl = $('#res-msg');
+  const timeSel = $('#f-time'), peopleSel = $('#f-people');
+  for (let t = 450; t <= 1320; t += 30) timeSel.add(new Option(hm(t), String(t), t === 1080, t === 1080));
+  for (let p = 1; p <= 12; p++) peopleSel.add(new Option(p === 1 ? '1 persoană' : p + ' persoane', String(p), p === 4, p === 4));
+  peopleSel.add(new Option('Peste 12 persoane', '13'));
+  const t0 = nowRo();
+  $('#f-date').min = t0.y + '-' + String(t0.m).padStart(2, '0') + '-' + String(t0.d).padStart(2, '0');
+  const TYPE = {normal: 'o masă', games: 'o masă de joc', night: 'locuri la Board Game Night', private: 'spațiul pentru un eveniment privat'};
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const nameEl = $('#f-name'), dateEl = $('#f-date');
+    const name = nameEl.value.trim(), date = dateEl.value, t = +timeSel.value, p = +peopleSel.value;
+    const type = (form.querySelector('input[name="type"]:checked') || {}).value || 'normal';
+    const note = $('#f-note').value.trim();
+    const fail = (msg, el) => { err.textContent = msg; if (el) el.focus(); };
+    if (!name) return fail('Scrie-ne numele tău, ca să știm pe cine așteptăm.', nameEl);
+    if (!date) return fail('Alege data la care vrei să vii.', dateEl);
+    const parts = date.split('-').map(Number), Y = parts[0], M = parts[1], D = parts[2];
+    const tn = nowRo(), todayNum = tn.y * 10000 + tn.m * 100 + tn.d, dateNum = Y * 10000 + M * 100 + D;
+    if (dateNum < todayNum) return fail('Data aleasă a trecut deja. Alege o zi de azi încolo.', dateEl);
+    const wd = new Date(Date.UTC(Y, M - 1, D)).getUTCDay() || 7, h = hoursFor(Y, M, D, wd);
+    if (!h) return fail('Pe ' + D + ' ' + MON[M - 1] + ' suntem închiși. Alege altă zi.', dateEl);
+    if (type === 'night' && wd !== 5) return fail('Board Game Night e doar vinerea. Alege o vineri sau alt fel de masă.', dateEl);
+    if (type === 'night' && (t < 1080 || t > 1260)) return fail('Board Game Night începe la 18:00. Alege o oră între 18:00 și 21:00.', timeSel);
+    if (t < h[0] || t > h[1] - 60) return fail(cap(WD[wd]) + ' suntem deschiși între ' + hm(h[0]) + ' și ' + hm(h[1]) + '. Alege o oră între ' + hm(h[0]) + ' și ' + hm(h[1] - 60) + '.', timeSel);
+    if (dateNum === todayNum && t < tn.h * 60 + tn.mi + 30) return fail('Pentru azi, alege o oră care e la cel puțin 30 de minute de acum.', timeSel);
+    err.textContent = '';
+    const who =p >= 13 ? 'mai mult de 12 persoane' : (p === 1 ? 'o persoană' : p + ' persoane');
+    msgEl.textContent = 'Bună! Aș vrea să rezerv ' + TYPE[type] + ' pentru ' + who + ', ' + WD[wd] + ', ' + D + ' ' + MON[M - 1] + ' ' + Y + ', la ora ' + hm(t) + '. Numele meu este ' + name + '.' + (note ? ' ' + note : '');
+    $('#copy-btn').textContent = 'Copiază mesajul';
+    form.hidden = true; resOut.hidden = false; resOut.focus();
+    burst(resOut, resOut.offsetWidth / 2, 24);
+  });
+  $('#copy-btn').addEventListener('click', e => {
+    const b = e.currentTarget, text = msgEl.textContent;
+    const selectIt = () => { const r = document.createRange(); r.selectNodeContents(msgEl); const s = getSelection(); s.removeAllRanges(); s.addRange(r); b.textContent = 'Textul e selectat, copiază-l'; };
+    try {
+      navigator.clipboard.writeText(text).then(() => { b.textContent = 'Mesaj copiat'; }, selectIt);
+    } catch (x) { selectIt(); }
+  });
+  $('#edit-btn').addEventListener('click', () => { resOut.hidden = true; form.hidden = false; $('#f-name').focus(); });
+
+  /* ---------- meniul de pe telefon ---------- */
+  const sheet = $('#mobile-menu'), burger = $('#burger');
+  function setSheet(open) {
+    sheet.hidden = !open; burger.setAttribute('aria-expanded', String(open));
+    document.documentElement.classList.toggle('lock', open);
+    if (open) $('a', sheet).focus();
+  }
+  burger.addEventListener('click', () => setSheet(true));
+  $('#sheet-close').addEventListener('click', () => { setSheet(false); burger.focus(); });
+  $$('a', sheet).forEach(a => a.addEventListener('click', () => setSheet(false)));
+  addEventListener('keydown', e => { if (e.key === 'Escape' && !sheet.hidden) { setSheet(false); burger.focus(); } });
+
+  /* ---------- cursor pe desktop ---------- */
+  if (fine && !reduce) {
+    document.documentElement.classList.add('has-cursor');
+    const c = $('.cursor'); let x = -100, y = -100, tx = -100, ty = -100;
+    addEventListener('pointermove', e => { tx = e.clientX; ty = e.clientY; c.classList.add('show'); }, {passive: true});
+    document.addEventListener('pointerover', e => c.classList.toggle('big', !!e.target.closest('a, button, label, select, input, textarea')));
+    document.addEventListener('pointerleave', () => c.classList.remove('show'));
+    (function loop() { x += (tx - x) * .22; y += (ty - y) * .22; c.style.transform = 'translate(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px) translate(-50%,-50%)'; requestAnimationFrame(loop); })();
+  }
+
+  /* ---------- efecte legate de scroll ---------- */
+  const nav = $('#top-nav'), media = $('#place-media img'), giant = $('#giant');
+  let lastY = scrollY, ticking = false;
+  function onScroll() {
+    ticking = false;
+    const y = scrollY, dy = y - lastY, hh = hero.offsetHeight; lastY = y;
+    nav.classList.toggle('scrolled', y > 30);
+    sDie.classList.toggle('show', y > hh * .7);
+    if (!reduce) {
+      if (y < hh * 1.1) stage.style.setProperty('--sp', clamp(y / hh, 0, 1).toFixed(3));
+      kick(dy);
+      const r = media.parentElement.getBoundingClientRect();
+      if (r.bottom > 0 && r.top < innerHeight) {
+        const p = (r.top + r.height / 2 - innerHeight / 2) / innerHeight;
+        media.style.transform = 'translateY(' + (p * -7).toFixed(2) + '%) scale(1.14)';
+      }
+    }
+    const g = giant.getBoundingClientRect();
+    giant.style.setProperty('--fill', (clamp((innerHeight - g.top) / (g.height + innerHeight * .3), 0, 1) * 100).toFixed(1) + '%');
+  }
+  addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, {passive: true});
+  addEventListener('resize', onScroll, {passive: true});
+  onScroll();
+})();
+</script>
 </body>
 </html>
